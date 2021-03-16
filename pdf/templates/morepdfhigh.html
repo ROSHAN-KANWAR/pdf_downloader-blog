@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Home{% endblock %}
+ {% block content%}
+
+<h2 class="mx-3 mt-3">More pdf 10th -12th classs</h2>
+<div class="row mt-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+        <table class="table">
+  <thead class="table-dark">
+    <tr>
+     <th scope="col">SNo.</th>
+      <th scope="col">Class/Subject</th>
+      <th scope="col">Year</th>
+        <th scope="col">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for high in mph %}
+    <tr>
+      <th scope="row">{{high.id}}</th>
+      <td>{{high.sub}}</td>
+      <td>{{high.year1}}</td>
+        <td>
+            <a href="{{high.file1.url}}" download="{{high.file1.url}}">
+            <button type="" class="btn btn-primary">Download</button>
+        </a>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+{%endblock%}

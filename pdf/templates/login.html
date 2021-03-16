@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static%}
+{%block title%}LOGIN_PAGE{% endblock %}
+ {% block content%}
+    <div class="row mt-3">
+        <div class="col-md-12 px-4">
+            {% if messages %}
+{% for mes in messages %}
+<p {% if mes.tags%} class="{{mes.tags}} px-3" {%endif%} >{{mes}}</p>
+{%endfor%}
+{% endif%}
+        </div>
+    </div>
+
+        <div class="row mt-3">
+        <div class="col-md-12 p-2 ">
+            {% if messages %}
+{% for mes in fm %}
+<p {% if mes.tags%} class="{{mes.tags}}" {%endif%} >{{mes}}</p>
+{%endfor%}
+{% endif%}
+        </div>
+    </div>
+
+      <div class="row">
+      <div class="col-md-4"></div>
+       <div class="col-sm-4 mt-2 bg-light ">
+        <form action="" method="post">
+      {% csrf_token%}
+      {% for fm in form%}
+      {{fm.label_tag}}{{fm}}<br>
+            <br>
+      {{fm.errors.message|striptags}}
+      {% endfor%}
+      <input type="submit" value="Login" class="btn btn-outline-success p-2">
+     </form>
+       </div>
+        <div class="col-md-4"></div>
+      </div>
+<br><br>
+
+{% endblock content%}

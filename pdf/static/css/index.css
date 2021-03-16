@@ -1,0 +1,28 @@
+    body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        b{
+            color:darkblue;
+        }
+
+  .bor li:active{
+   border-bottom: 1px solid red;
+
+  }
+  .bor li:hover{
+   border-bottom: 1px solid red;
+
+  }
+  .grow span{
+    color: rgb(163, 69, 15);
+  }
+   .tech h4{
+     word-spacing: 3px;
+     letter-spacing: 2px;
+   }
+  .meet img{
+    border-radius: 50%;
+  }

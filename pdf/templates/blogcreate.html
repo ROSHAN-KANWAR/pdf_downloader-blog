@@ -1,0 +1,60 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Home{% endblock %}
+ {% block content%}
+<div class="row mt-3">
+ <div class="col-md-2"></div>
+ <div class="col-md-6 mt-1">
+  <form action="" method="post" enctype="multipart/form-data">
+   {%csrf_token%}
+       {% for fm in form%}
+      {{fm.label_tag}}{{fm}}<br>
+      {{fm.errors.message|striptags}}
+      {% endfor%}
+   <br>
+    <button type="submit" class=" btn btn-success mt-2">Blog Post</button>
+  </form>
+
+  <!--<form action="{% url 'create'%}" method="post" autocomplete="off">
+ {%csrf_token%}
+  <div class="form-group">
+  <div class="custom-file">
+   <label class="custom-file-label">Select Image : </label>
+  <input type="file" name="img" src="{{img.url}}" accept="image/*" required class="custom-file-input mt-1 form-control" id="">
+  </div>
+  </div>
+    <div class="form-group mt-2">
+    <label for="validationTextarea1" class=" col-form-label">Suitable Title For Blog :</label>
+    <div class="col-sm-11">
+      <input type="text"  name="title" class="form-control" id="validationTextarea1" placeholder="Suitable title for blog">
+    </div>
+  </div>
+    <div class="mb-3 mt-2">
+    <label for="" class="mb-1">Write your Blog :</label>
+    <textarea class="form-control"  name="dec"  placeholder="Required example textarea" required></textarea>
+  </div>
+   <div class="row">
+    <div class="col-md-6">
+          <div class="form-group mt-2 p-2">
+   <label for="start">Publish Date:</label><br>
+   <input type="date" id="start" name="pdate" class="mt-1"
+       placeholder="Publish Date.."
+       min="2021-01-01" max="2025-12-31" required >
+          </div>
+    </div>
+      <div class="col-md-6">
+        <div class="form-group mt-1">
+    <label for="validationTextarea11" class=" col-form-label">Writter Name :</label>
+    <div class="col-sm-11">
+      <input type="text" name="cat" required class="form-control" id="validationTextarea11" placeholder="Suitable title for blog">
+    </div>
+  </div>
+      </div>
+   </div><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+ </div></div>
+ -->
+ <div class="col-md-2"></div>
+</div>
+{%endblock%}

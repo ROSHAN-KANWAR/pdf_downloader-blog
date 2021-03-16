@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Home{% endblock %}
+ {% block content%}
+<br>
+      <div class="row">
+      <div class="col-md-3"></div>
+       <div class="col-md-6 px-2">
+        <form action="" method="post">
+      {% csrf_token%}
+      {% for fm in form%}
+      {{fm.label_tag}}{{fm}}
+      {{fm.errors.message|striptags}}
+      {% endfor%}
+      <button type="submit" class="btn btn-outline-success mt-2">Signup</button>
+     </form>
+       </div>
+        <div class="col-md-3"></div>
+      </div>
+
+<br>
+{%endblock%}

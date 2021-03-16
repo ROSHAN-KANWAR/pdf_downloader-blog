@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+     <link rel="stylesheet" href="{% static 'font/css/all.css' %}">
+    <title>Blog </title>
+    <style>
+
+.hello p{
+letter-spacing:2px;
+}
+.class{
+background-color:#dae5f7
+}
+ .bor li:active{
+   border-bottom: 1px solid red;
+  }
+  .bor li:hover{
+   border-bottom: 1px solid red;
+  }
+  .li h4{
+  list-style-type:none;
+  }
+  ul.login{
+  padding: 0;
+margin: 0;
+list-style-type: none;
+float: right;
+  }
+  .login li a{
+  display:block;
+  text-decoration: none;
+  width: 5em;
+  color:blue;
+ font-size:20px;
+ margin-left:2px;
+
+  }
+  .login li a i{
+ color:black;
+ font-size:20px;
+  }
+  .login li a:hover{
+
+  }
+    </style>
+</head>
+<body>
+	<div class="container-fluid 6">
+   <nav class=" navbar navbar-expand-lg navbar-light bg-light text-capitalize">
+            <!-- Image and text -->
+            <nav class="navbar navbar-light bg-light mt-3">
+
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                  <i class="fas fa-home"></i>
+                    </a>
+            </nav>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="bor collapse  navbar-collapse hover" id="navbarNavDropdown">
+                        <ul class="navbar-nav mt-3">
+                            <li class="nav-item">
+                                <a class="nav-link active js_scroll" href="{% url 'blog' %}">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active js_scroll" href="{% url 'quiz' %}">Quiz</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js_scroll" href="">About</a>
+                            </li>
+                             <li class="mx-3 mt-1"><a href="{% url 'sign' %}"><button type="" class="btn btn-primary"><i class="fas fa-user "></i> Create Account</button></a></li>
+      <li  class="mx-2 mt-1"><a href="{% url 'login' %}"><button type="" class="btn btn-outline-success"><i class="fas fa-sign-in-alt"></i> Login</button> </a></li>
+
+            <li class="mx-3 mt-1"><a href="{% url 'profile' %}"><button type="" class="btn btn-warning">Dashboard</button></a></li>
+
+    <li class="mx-3 mt-1"><a href="{% url 'create' %}"><button type="" class="btn btn-outline-primary">Create Blog</button></a></li>
+
+    </ul>
+
+                    </div>
+            </nav>
+<br>
+       <!--blogpost-->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    {%for post in page_obj %}
+                    <div class="col-xl-4 col-lg-6  col-md-6  col-sm-6 col-12 mt-2 c ">
+                      <div class="card-deck">
+                <div class="card border-primary" style="width: 18rem;">
+  <img class="card-img-top img-thumbnail" src="{{post.img.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.dec|truncatewords:10}}</p>
+    <a href="{% url 'postview' post.id %}" class="btn btn-primary">Read More</a>
+     </div>
+                    <div class="card-footer">
+      <small class="text-muted">Publish Date: <b>{{post.d2}}</b> </small>
+    </div>
+   </div>
+                      </div></div>
+                        {%endfor%}
+            </div>
+                <nav aria-label="Page navigation example ">
+  <ul class="pagination justify-content-start mt-3">
+    <li class="page-item ">
+         {% if page_obj.has_previous %}
+      <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
+        {%endif%}
+    </li>
+      <li class="mx-1 page-item mt-2">
+          <p><span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+</p>
+      </li>
+      <!--
+       {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">{{page_obj.number}}</a></li>
+      {%endif%}-->
+  <li class="page-item mx-1">
+          {% if page_obj.has_next %}
+      <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+          {%endif%}
+    </li>
+  </ul>
+</nav><!--
+                  <span>
+      <h3>Next and previous Page......</h3><br>
+    {% if page_obj.has_previous %}
+    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{page_obj.next_page_number}}">Next</a>
+    {% endif %}
+    </span>-->
+            </div>
+
+            <div class="col-md-3 bg-light px-1">
+                <h3 class="mt-1">Latest Post</h3><br>
+                <h5>Category</h5>
+            </div>
+        </div>
+
+
+        <br><br>
+    <div class="row bg-light foot 5 mt-2">
+<div class="col-md-3 ">
+    <img src="{%static 'image/logo.svg' %}" class="w-25 h-25 img-fluid rounded" alt="">
+ <br>  <br> <p>Techno Developer is a Team of Developers that delivers Website & Mobile Apps to
+        the Businesses, Start-ups, Institution etc.</p>
+</div>
+<div class="col-md-3 ">
+    <h2 class="">Contact us</h2>
+    <p class=" text-muted ">Email :</p>
+    <span>support@technos.com</span>
+
+    <p>Phone: (+91) 7000268870</p><br>
+    <br>
+    <p>Address: Taita, Chhibc State, India, Postal Code xxxxxx</p>
+</div>
+<div class="col-md-3">
+    <h3>Follow Us</h3>
+
+</div>
+<div class="col-md-12 bg-dark text-white">
+    <p class="pt-2">@2021 technos || All Rights Reserved</p>
+</div>
+    </div>
+
+	</div>
+<script src="{%static 'js/bootstrap.min.js' %}"></script>
+<script src="{%static 'js/jquery-3.5.1.js' %}"></script>
+</body>
+</html>

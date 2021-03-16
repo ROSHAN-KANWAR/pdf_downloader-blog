@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Home{% endblock %}
+ {% block content%}
+ <div class="container">
+     <div class="row view mt-2">
+         <div class="col-md-10">
+     <img src={{blogpost.img.url}} alt="load" class="img-fluid " >
+             <article>
+                 <p class="mt-1">Post By : <b>{{blogpost.cat}}</b></p>
+                 <p><b>Publish Date </b>: {{blogpost.pdate}}</p>
+             </article>
+             <h3>{{blogpost.id}}.) {{blogpost.title }}</h3>
+             <p class="mt-1">
+                 {{blogpost.dec}}
+             </p>
+
+         </div>
+
+         <div class="col-md-2"></div>
+     </div>
+ </div><br><br>
+{%endblock%}

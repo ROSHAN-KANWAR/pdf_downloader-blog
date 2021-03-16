@@ -1,0 +1,87 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}PROFILE_PAGE{% endblock %}
+ {% block content%}
+<!--success msg-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {% if messages %}
+{% for mes in fm%}
+<p {% if mes.tags%} class="{{mes.tags}}" {%endif%} >{{mes}}</p>
+{%endfor%}
+{% endif%}
+        </div>
+    </div>
+<!--dash img msg-->
+      <div class="row d mt-2">
+          <div class="col-md-3 mt-3 dash ">
+              <div class="row">
+                  <div class="col-md-12 col-sm-6">
+                         <img src="{%static 'image/team_2.jpg' %}" class="img-fluid w-25 text-center">
+                  </div>
+                  <div class="col-md-6 col-sm-6 mt-2 ">
+                     <a href="#"><p class="bg-success text-white px-1">Upload Avatar</p></a>
+                  </div>
+              </div>
+              <br>
+             Name : <p>{{name.first_name}}</p>
+              UserName : <p>{{name.username}}</p>
+          </div>
+<!--dash board datail msg-->
+       <div class="col-md-7 px-1">
+           <h3 class="bg-warning px-2 p-2">Post Your Blog</h3><br>
+           <div class="row">
+               <div class="col-md-1"></div>
+               <div class="col-md-10">
+                  <a href="{% url 'create' %}"><button type="" class="btn btn-primary">Create Blog</button></a>
+               </div>
+               <div class="col-md-1"></div>
+           </div>
+        {% if user != None %}
+        <h3 class="mt-3">List of User</h3>
+    		<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+        <th scope="col">User-Name</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for fm in user %}
+    <tr>
+  	 <th scope="row">{{st.id}}</th>
+      <td>  {{fm.username}}</td>
+        <td>  {{fm.first_name}}</td>
+      <td>{{fm.email}}</td>
+    <tr>
+     {%endfor%}
+  </tbody>
+</table>
+    {%endif%}
+       </div>
+    <div class="col-md-2 bg-light">
+         <a href="{% url 'logout' %}"><h4 class="btn btn-danger mb-3 ml-3 mt-2">Logout</h4></a>
+        <a href=""><h5 class="btn btn-success mb-3 mt-2">Change Password</h5></a>
+    </div>
+
+      </div>
+    </div><br>
+<br>
+{% endblock content%}
+
+<!--
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+     {% for fm in name %}
+   {{fm.label_tag}}
+    {{fm}}
+     {{fm.errors|striptags}}<br><br>
+        {% endfor %}
+    <input type="submit" value="Save" class="btn btn-success" name="" id="">
+
+            </form>
+
+-->

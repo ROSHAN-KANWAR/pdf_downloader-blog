@@ -1,0 +1,75 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Quiz Questions{% endblock %}
+ {% block content%}
+<br>
+<h4 class="mt-3">Select Type of Exam Question</h4>
+<div class="row mt-3 mx-2 li">
+   <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{%url 'quiz1' %}">SCC</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{%url 'quiz1' %}">UPSC</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{%url 'quiz1' %}">Banking</a>
+  </li>
+ <li class="nav-item">
+    <a class="nav-link" href="{%url 'quiz1' %}">Railway</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{%url 'quiz1' %}">Liboratory</a>
+  </li> <li class="nav-item">
+    <a class="nav-link" href="{%url 'quiz1' %}">Technical-Pros.</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{%url 'quiz1' %}">PSC</a>
+  </li>
+</ul>
+    </div>
+
+<br>
+<div class="row q mt-3">
+    <div class="col-md-2"> <h5>Today Date :<b> {{d2}}</b></h5></div>
+    <div class="col-md-10 mt-2">
+         {% for q in quiz%}
+        <div class="mt-2">
+        <table>
+            <tr>
+                <td class="">{{q.id}} ) :{{q.ques}}</td>
+            </tr>
+            <tr>
+              <td>
+                  <input type="radio" class="rb" name={{q.id}} id="op1" value="{{i.op1}}"> {{q.op1}}
+              </td>
+            </tr>
+            <tr>
+                <td>
+                  <input type="radio" class="rb" name={{q.id}} id="op2" value="{{i.op2}}"> {{q.op2}}
+              </td>
+            </tr>
+            <tr>
+                <td>
+                  <input type="radio" class="rb" name={{q.id}} id="op3" value="{{i.op3}}"> {{q.op3}}
+              </td>
+            </tr>
+            <tr>
+                <td>
+                  <input type="radio" class="rb" name={{q.id}} id="op4" value="{{i.op4}}"> {{q.op4}}
+              </td>
+            </tr>
+            <tr>
+               <td><a href="">
+                   <label id="cr" class="rb" style="display:none;color:green">Answer is :<b class="text-success">{{q.correct}}</b></label>
+               show answer</a>
+               </td>
+            </tr>
+        </table>
+            {%endfor%}
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+{%endblock%}

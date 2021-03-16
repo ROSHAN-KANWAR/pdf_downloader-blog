@@ -1,0 +1,169 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block title%}Home{% endblock %}
+ {% block content%}
+<div class="row grow  h-100 tech">
+ <div class=" col-md-6 order-lg-0 order-md-0 order-sm-1 order-1  hello">
+    <h3 class="mx-2 mt-1">Techno website</h3>
+     <div class="mx-2">
+     <p class="mx-2 mt-4">
+     We are provides previous questions years paper of govt. exam like UPSC,SCC,
+         Railway,Banking etc. And also provides different types of quiz questions
+         .If you are interested for bloging,creat an account with techno
+         and post you blog globally.
+     </p><br>
+         <div class="row">
+             <div class="col-md-4">
+                  <a href="{% url 'quiz' %}">
+<button type="button" class="btn btn-warning mx-3">Start Quiz</button>
+            </a>
+             </div>
+
+             <div class="col-md-4">
+                 <a href="{% url 'blog' %}">
+<button type="button" class="btn btn-primary mx-3">Start Blog</button>
+            </a>
+             </div>
+         </div>
+
+    </div>
+
+
+            </div>
+            <div class="col-md-6 mt-5 order-lg-1 order-md-1 order-sm-0 order-0 ">
+                 <div class="p-2">
+                  <img src="{%static 'image/h1 (2).png' %}" class="mt-auto img-fluid w-75">
+                 </div>
+            </div>
+        </div>
+<br>
+<div class="row 3">
+ <div class="col-md-12">
+     <h3 class="mx-3 my-2 mb-2">Pdf Download</h3>
+ </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-1"></div>
+    <div class="col-md-10 mt-2">
+         <div class="col-md-12  class">
+     <h3 class=" mx-3 text-center">10th-12th Class</h3><br>
+ </div>
+        <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">SNo.</th>
+      <th scope="col">Class/Subject</th>
+      <th scope="col">Year</th>
+        <th scope="col">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for high in fm %}
+    <tr>
+      <th scope="row">{{high.id}}</th>
+      <td>{{high.sub}}</td>
+      <td>{{high.year1}}</td>
+        <td>
+            <a href="{{high.file1.url}}" download="{{high.file1.url}}">
+            <button type="" class="btn btn-primary">Download</button>
+        </a>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+              <a href="{% url 'mph' %}">
+       <div class="col-md-12 bg-light text-center p-2">
+View More Pdf
+
+       </div>
+              </a>
+    </div>
+     <div class="col-md-1"></div>
+</div>
+</div>
+<br>
+<div class="row 3">
+    <div class="row">
+        <div class="col-md-1"></div>
+    <div class="col-md-10 mt-2">
+         <div class="col-md-12  class">
+     <h3 class=" mx-3 text-center">State-Level Govt. Exam</h3><br>
+ </div>
+        <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">SNo.</th>
+      <th scope="col">Exam Name</th>
+      <th scope="col">Year</th>
+        <th scope="col">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for state in fm1 %}
+    <tr>
+      <th scope="row">{{state.id}}</th>
+      <td>{{state.exam}}</td>
+      <td>{{state.year1}}</td>
+        <td>
+             <a href="{{state.file1.url}}" download="{{state.file1.url}}">
+            <button type="" class="btn btn-primary">Download</button>
+        </a>
+            </td>
+    </tr>
+   {%endfor%}
+  </tbody>
+</table>
+  <a href="{% url 'mps' %}">
+       <div class="col-md-12 bg-light text-center p-2">
+View More Pdf
+
+       </div>
+              </a>
+    </div>
+     <div class="col-md-1"></div>
+</div>
+</div>
+<br>
+<div class="row 3">
+    <div class="row">
+        <div class="col-md-1"></div>
+    <div class="col-md-10 mt-2">
+         <div class="col-md-12  class">
+     <h3 class=" mx-3 text-center">All India Govt. Exam</h3><br>
+ </div>
+        <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">SNo.</th>
+      <th scope="col">Exam Name</th>
+      <th scope="col">Year</th>
+        <th scope="col">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for ind in fm2%}
+    <tr>
+      <th scope="row">{{ind.id}}</th>
+      <td>{{ind.exam1}}</td>
+      <td>{{ind.year1}}</td>
+        <td>
+            <a href="{{ind.file1.url}}" download="{{ind.file1.url}}">
+            <button type="" class="btn btn-primary">Download</button>
+        </a>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+ <a href="{% url 'mpi' %}">
+       <div class="col-md-12 bg-light text-center p-2">
+   View More Pdf
+
+       </div>
+              </a>
+    </div>
+     <div class="col-md-1"></div>
+</div>
+</div>
+<br>
+{%endblock%}
